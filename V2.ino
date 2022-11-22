@@ -26,6 +26,7 @@ Keypad customKeypad = Keypad( makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS
 
 void setup(){
   Serial.begin(9600);
+  pinMode(10, OUTPUT);
 }
   
 void loop(){
@@ -49,7 +50,8 @@ void loop(){
         Serial.println("Cijfers Uit");
         break;
       case '#':
-        Serial.println("Kruise Uit");
+        digitalWrite(10, LOW);
+                Serial.println("Kruizen Uit");
         break;
       case 'A':
         Serial.println("Pijl links aan");
@@ -59,6 +61,10 @@ void loop(){
         break;
       case 'C':
         Serial.println("Kruis aan");
+        break;
+      case '0':
+        Serial.println("test");
+        digitalWrite(10, HIGH);
         break;
       default:
         Serial.println("Niet Bekend");
